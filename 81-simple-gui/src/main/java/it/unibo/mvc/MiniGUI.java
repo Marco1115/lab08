@@ -39,7 +39,7 @@ public class MiniGUI {
         canvas.add(innerPanel, BorderLayout.CENTER);
         final JButton write = new JButton("Print a random number on standard output");
         innerPanel.add(write);
-        final JTextField resultField = new JTextField("Result");
+        final JTextField resultField = new JTextField("Result: ");
         canvas.add(resultField, BorderLayout.NORTH);
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,8 +49,10 @@ public class MiniGUI {
         write.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                System.out.println(randomGenerator.nextInt()); //NOPMD 
+                final int randomNumber = randomGenerator.nextInt();
+                System.out.println(randomNumber); //NOPMD 
                 // Required by the exercise
+                resultField.setText("Result: " + randomNumber);
             }
         });
     }
