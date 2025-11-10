@@ -17,7 +17,9 @@ class TestDeathNote {
     private static final String HUMAN_NAME_1 = "Marco";
     private static final String HUMAN_NAME_2 = "Giorgio";
     private static final String DEATH_CAUSE = "karting accident";
-    private static final long SLEEP_TIME = 100;
+    private static final String DETAILS = "ran for too long";
+    private static final long SLEEP_TIME_CAUSE = 100;
+    private static final long SLEEP_TIME_DETAILS = 6100;
 
     @Test
     void testIllegalRuleNumber() {
@@ -65,8 +67,28 @@ class TestDeathNote {
         deathNote.writeName(HUMAN_NAME_2);
         assertTrue(deathNote.writeDeathCause(DEATH_CAUSE));
         assertEquals(DEATH_CAUSE, deathNote.getDeathCause(HUMAN_NAME_2));
-        Thread.sleep(SLEEP_TIME);
+        Thread.sleep(SLEEP_TIME_CAUSE);
         deathNote.writeDeathCause("heart attack");
         assertEquals(DEATH_CAUSE, deathNote.getDeathCause(HUMAN_NAME_2));
+    }
+
+    @Test
+    void testDetails() throws InterruptedException {
+        final DeathNoteImpl deathNote = new DeathNoteImpl();
+        try {
+            deathNote.writeDetails(DETAILS);
+            fail("Writing details without any name in the death note was possible, but should have thrown an exception");
+        } catch (final IllegalStateException e) {
+            assertNotNull(e.getMessage());
+            assertFalse(e.getMessage().isBlank()); // Not a blank or empty message
+        }
+        deathNote.writeName(HUMAN_NAME_1);
+        assertTrue(deathNote.getDeathDetails(HUMAN_NAME_1).isBlank());
+        assertTrue(deathNote.writeDetails(DETAILS));
+        assertEquals(DETAILS, deathNote.getDeathDetails(HUMAN_NAME_1));
+        deathNote.writeName(HUMAN_NAME_2);
+        Thread.sleep(SLEEP_TIME_DETAILS);
+        assertFalse(deathNote.writeDetails("Dummy death details"));
+        assertEquals(DETAILS, deathNote.getDeathDetails(HUMAN_NAME_1));
     }
 }
