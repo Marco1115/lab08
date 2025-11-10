@@ -1,0 +1,72 @@
+package it.unibo.deathnote.impl;
+
+import it.unibo.deathnote.api.DeathNote;
+
+/**
+ * Implementation of the {@link DeathNote} interface.
+ */
+public class DeathNoteImpl implements DeathNote {
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getRule(final int ruleNumber) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getRule'");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void writeName(final String name) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'writeName'");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean writeDeathCause(final String cause) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'writeDeathCause'");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean writeDetails(final String details) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'writeDetails'");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getDeathCause(final String name) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getDeathCause'");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getDeathDetails(final String name) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getDeathDetails'");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean isNameWritten(final String name) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isNameWritten'");
+    }
+}
