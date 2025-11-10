@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
+import it.unibo.deathnote.api.DeathNote;
 import it.unibo.deathnote.impl.DeathNoteImpl;
 
 class TestDeathNote {
@@ -22,6 +23,14 @@ class TestDeathNote {
         } catch (final IllegalArgumentException e) {
             assertNotNull(e.getMessage());
             assertFalse(e.getMessage().isBlank()); // Not a blank or empty message
+        }
+    }
+
+    @Test
+    void testNoEmptyOrNullRules() {
+        for (final String rule: DeathNote.RULES) {
+            assertNotNull(rule);
+            assertFalse(rule.isBlank());
         }
     }
 }
