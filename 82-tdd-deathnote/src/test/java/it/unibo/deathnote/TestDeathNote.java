@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import it.unibo.deathnote.api.DeathNote;
@@ -21,9 +22,15 @@ class TestDeathNote {
     private static final long SLEEP_TIME_CAUSE = 100;
     private static final long SLEEP_TIME_DETAILS = 6100;
 
+    private DeathNote deathNote;
+
+    @BeforeEach
+    void initialiseDeathNote() {
+        deathNote = new DeathNoteImpl();
+    }
+
     @Test
     void testIllegalRuleNumber() {
-        final DeathNoteImpl deathNote = new DeathNoteImpl();
         try {
             deathNote.getRule(0);
             deathNote.getRule(NEGATIVE_NUMBER);
@@ -36,7 +43,6 @@ class TestDeathNote {
 
     @Test
     void testNoEmptyOrNullRules() {
-        final DeathNote deathNote = new DeathNoteImpl();
         for (int i = 1; i <= DeathNote.RULES.size(); i++) {
             assertNotNull(deathNote.getRule(i));
             assertFalse(deathNote.getRule(i).isBlank());
@@ -45,7 +51,6 @@ class TestDeathNote {
 
     @Test
     void testWrite() {
-        final DeathNoteImpl deathNote = new DeathNoteImpl();
         assertFalse(deathNote.isNameWritten(HUMAN_NAME_1));
         deathNote.writeName(HUMAN_NAME_1);
         assertTrue(deathNote.isNameWritten(HUMAN_NAME_1));
@@ -55,7 +60,6 @@ class TestDeathNote {
 
     @Test
     void testDeathCause() throws InterruptedException {
-        final DeathNoteImpl deathNote = new DeathNoteImpl();
         try {
             deathNote.writeDeathCause(HUMAN_NAME_1);
             fail("Writing a death cause without any name in the death note was possible, but should have thrown an exception");
@@ -75,7 +79,6 @@ class TestDeathNote {
 
     @Test
     void testDetails() throws InterruptedException {
-        final DeathNoteImpl deathNote = new DeathNoteImpl();
         try {
             deathNote.writeDetails(DETAILS);
             fail("Writing details without any name in the death note was possible, but should have thrown an exception");
