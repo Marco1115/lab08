@@ -95,6 +95,6 @@ class TestDeathNote {
         deathNote.writeName(HUMAN_NAME_2);
         Thread.sleep(SLEEP_TIME_DETAILS);
         assertFalse(deathNote.writeDetails("Dummy death details"));
-        assertEquals(DETAILS, deathNote.getDeathDetails(HUMAN_NAME_1));
+        assertEquals("", deathNote.getDeathDetails(HUMAN_NAME_2));
     }
 }
