@@ -36,9 +36,10 @@ class TestDeathNote {
 
     @Test
     void testNoEmptyOrNullRules() {
-        for (final String rule: DeathNote.RULES) {
-            assertNotNull(rule);
-            assertFalse(rule.isBlank());
+        final DeathNote deathNote = new DeathNoteImpl();
+        for (int i = 1; i <= DeathNote.RULES.size(); i++) {
+            assertNotNull(deathNote.getRule(i));
+            assertFalse(deathNote.getRule(i).isBlank());
         }
     }
 
