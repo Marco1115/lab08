@@ -75,7 +75,7 @@ class TestDeathNote {
         assertTrue(deathNote.writeDeathCause(DEATH_CAUSE));
         assertEquals(DEATH_CAUSE, deathNote.getDeathCause(HUMAN_NAME_2));
         Thread.sleep(SLEEP_TIME_CAUSE);
-        deathNote.writeDeathCause("heart attack");
+        assertFalse(deathNote.writeDeathCause("heart attack"));
         assertEquals(DEATH_CAUSE, deathNote.getDeathCause(HUMAN_NAME_2));
     }
 
