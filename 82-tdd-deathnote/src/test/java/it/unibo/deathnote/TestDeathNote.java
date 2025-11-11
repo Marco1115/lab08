@@ -56,7 +56,7 @@ class TestDeathNote {
         assertFalse(deathNote.isNameWritten(HUMAN_NAME_1));
         deathNote.writeName(HUMAN_NAME_1);
         assertTrue(deathNote.isNameWritten(HUMAN_NAME_1));
-        assertFalse(deathNote.isNameWritten("Mario"));
+        assertFalse(deathNote.isNameWritten(HUMAN_NAME_2));
         assertFalse(deathNote.isNameWritten(""));
     }
 
