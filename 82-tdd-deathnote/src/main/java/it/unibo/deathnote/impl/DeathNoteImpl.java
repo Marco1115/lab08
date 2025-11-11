@@ -1,11 +1,19 @@
 package it.unibo.deathnote.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import it.unibo.deathnote.api.DeathNote;
 
 /**
  * Implementation of the {@link DeathNote} interface.
  */
 public class DeathNoteImpl implements DeathNote {
+
+    private String lastName;
+    private Long lastWriteTime;
+
+    private final Map<String, DeathInfo> deathCauseMap = new HashMap<>();
 
     /**
      * {@inheritDoc}
@@ -71,5 +79,18 @@ public class DeathNoteImpl implements DeathNote {
     public boolean isNameWritten(final String name) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'isNameWritten'");
+    }
+
+    private static final class DeathInfo {
+
+        private static final String DEFAULT_CAUSE = "heart attack";
+
+        private String deathCause;
+        private String deathDetails;
+
+        private DeathInfo() {
+            this.deathCause = DEFAULT_CAUSE;
+            this.deathDetails = "";
+        }
     }
 }
