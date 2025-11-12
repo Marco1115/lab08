@@ -2,6 +2,7 @@ package it.unibo.deathnote.impl;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import it.unibo.deathnote.api.DeathNote;
 
@@ -13,7 +14,7 @@ public class DeathNoteImpl implements DeathNote {
     private String lastName;
     private Long lastWriteTime;
 
-    private final Map<String, DeathInfo> deathCauseMap = new HashMap<>();
+    private final Map<String, DeathInfo> deathMap = new HashMap<>();
 
     /**
      * {@inheritDoc}
@@ -32,8 +33,9 @@ public class DeathNoteImpl implements DeathNote {
      */
     @Override
     public void writeName(final String name) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'writeName'");
+        this.deathMap.put(Objects.requireNonNull(name), new DeathInfo());
+        this.lastName = name;
+        this.lastWriteTime = System.currentTimeMillis();
     }
 
     /**
