@@ -12,7 +12,6 @@ import it.unibo.deathnote.api.DeathNote;
 public class DeathNoteImpl implements DeathNote {
 
     private String lastName;
-    private Long lastWriteTime;
 
     private final Map<String, DeathInfo> deathMap = new HashMap<>();
 
@@ -35,7 +34,6 @@ public class DeathNoteImpl implements DeathNote {
     public void writeName(final String name) {
         this.deathMap.put(Objects.requireNonNull(name), new DeathInfo());
         this.lastName = name;
-        this.lastWriteTime = System.currentTimeMillis();
     }
 
     /**
@@ -89,10 +87,12 @@ public class DeathNoteImpl implements DeathNote {
 
         private String deathCause;
         private String deathDetails;
+        private Long deathTime;
 
         private DeathInfo() {
             this.deathCause = DEFAULT_CAUSE;
             this.deathDetails = "";
+            this.deathTime = System.currentTimeMillis();
         }
     }
 }
