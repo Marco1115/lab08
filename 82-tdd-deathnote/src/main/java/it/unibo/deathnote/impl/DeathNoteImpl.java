@@ -84,6 +84,7 @@ public class DeathNoteImpl implements DeathNote {
     private static final class DeathInfo {
 
         private static final String DEFAULT_CAUSE = "heart attack";
+        private static final Long CAUSE_MAX_TIME = 40L;
 
         private String deathCause;
         private String deathDetails;
@@ -93,6 +94,17 @@ public class DeathNoteImpl implements DeathNote {
             this.deathCause = DEFAULT_CAUSE;
             this.deathDetails = "";
             this.deathTime = System.currentTimeMillis();
+        }
+
+        private boolean writeInfoCause(final String cause) {
+            final long deltaTime = System.currentTimeMillis() - this.deathTime;
+            if (deltaTime <= CAUSE_MAX_TIME) {
+                this.deathCause = cause;
+                this.deathTime = System.currentTimeMillis();
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 }
