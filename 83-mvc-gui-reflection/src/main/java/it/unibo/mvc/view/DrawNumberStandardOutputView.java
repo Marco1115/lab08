@@ -9,23 +9,16 @@ import it.unibo.mvc.api.DrawResult;
  */
 public final class DrawNumberStandardOutputView implements DrawNumberView {
 
-    private DrawNumberController controller;
-
     @Override
     public void setController(final DrawNumberController observer) {
-        this.controller = observer;
     }
 
     @Override
     public void start() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'start'");
     }
 
     @Override
     public void result(final DrawResult res) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'result'");
+        System.out.println(res.getDescription());
     }
-
 }
