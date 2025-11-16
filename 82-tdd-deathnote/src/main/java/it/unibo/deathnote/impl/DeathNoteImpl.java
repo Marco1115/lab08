@@ -52,8 +52,10 @@ public class DeathNoteImpl implements DeathNote {
      */
     @Override
     public boolean writeDetails(final String details) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'writeDetails'");
+        if (this.lastName == null || details == null) {
+            throw new IllegalStateException("Inconsistent state: either the there is no name written or the details is null");
+        }
+        return this.deathMap.get(lastName).writeInfoDetails(details);
     }
 
     /**
@@ -83,7 +85,8 @@ public class DeathNoteImpl implements DeathNote {
     private static final class DeathInfo {
 
         private static final String DEFAULT_CAUSE = "heart attack";
-        private static final Long CAUSE_MAX_TIME = 40L;
+        private static final long CAUSE_MAX_TIME = 40L;
+        private static final long DETAILS_MAX_TIME = 6040L;
 
         private String deathCause;
         private String deathDetails;
@@ -99,6 +102,16 @@ public class DeathNoteImpl implements DeathNote {
             final long deltaTime = System.currentTimeMillis() - this.deathTime;
             if (deltaTime <= CAUSE_MAX_TIME) {
                 this.deathCause = cause;
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        private boolean writeInfoDetails(final String details) {
+            final long deltaTime = System.currentTimeMillis() - this.deathTime;
+            if (deltaTime <= DETAILS_MAX_TIME) {
+                this.deathDetails = details;
                 return true;
             } else {
                 return false;
