@@ -9,10 +9,11 @@ import it.unibo.mvc.api.DrawResult;
  */
 public final class DrawNumberStandardOutputView implements DrawNumberView {
 
+    private DrawNumberController controller;
+
     @Override
     public void setController(final DrawNumberController observer) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setController'");
+        this.controller = observer;
     }
 
     @Override
