@@ -87,7 +87,7 @@ public class DeathNoteImpl implements DeathNote {
 
         private String deathCause;
         private String deathDetails;
-        private Long deathTime;
+        private final Long deathTime;
 
         private DeathInfo() {
             this.deathCause = DEFAULT_CAUSE;
