@@ -61,8 +61,7 @@ public class DeathNoteImpl implements DeathNote {
      */
     @Override
     public String getDeathCause(final String name) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getDeathCause'");
+        return this.deathMap.get(name).deathCause;
     }
 
     /**
@@ -70,8 +69,7 @@ public class DeathNoteImpl implements DeathNote {
      */
     @Override
     public String getDeathDetails(final String name) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getDeathDetails'");
+        return this.deathMap.get(name).deathDetails;
     }
 
     /**
